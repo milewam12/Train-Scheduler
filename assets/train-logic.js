@@ -1,6 +1,6 @@
 /* firebase */
-
-  // Initialize Firebase
+  console.log("hello");
+// Initialize Firebase
   var config = {
     apiKey: "AIzaSyApEV4StR971zJTCqHCvM4CWy62w-n2LwU",
     authDomain: "train-scheduler-a8ba8.firebaseapp.com",
@@ -11,5 +11,33 @@
   };
   firebase.initializeApp(config);
 
-  var database = firebase.database();
+var database = firebase.database();
+  console.log(database , "test");
+
+$("#addTrain").on("click", function(event) {
+   event.preventDefault();
+
+    var trainName = $("#name-input").val().trim();
+     console.log(trainName);
+    var destination = $("#destination").val().trim();
+    var firstTrain = moment($("#first-train").val().trim(), "DD/MM/YY").format("X");
+    var frequency = $("#frequency-input").val().trim();
+
+
+    var newTrain = {
+        tName: trainName,
+        tDestination: destination,
+        tFirstTimeTrain: firstTrain,
+        tFrequency: frequency,
+    };
+
+
+    database.ref().push(newTrain)
+   
+   console.log(newTrain.name);
+
+    
+});
+
+
 
