@@ -22,7 +22,7 @@ $("#addTrain").on("click", function (event) {
     var trainName = $("#name-input").val().trim();
     console.log(trainName);
     var destination = $("#destination").val().trim();
-    var firstTrain = moment($("#first-train").val().trim(), "DD/MM/YY").format("X");
+    var firstTrain = moment($("#first-train").val().trim(), "HH:mm").format("HH:mm a");
     var frequency = $("#frequency-input").val().trim();
 
 
@@ -57,7 +57,7 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
      var firstTrain = childSnapshot.val().tFirstTimeTrain;
      var frequency = childSnapshot.val().tFrequency;
 
-     $("#newtrain-data").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + firstTrain + "</td><td>" + frequency + "</td><td>" + minsAway + "</td></tr>")
+     $("#newtrain-data").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + firstTrain + "</td><td>" + minsAway + "</td></tr>")
 
 
 })
